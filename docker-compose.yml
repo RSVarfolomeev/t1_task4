@@ -1,0 +1,25 @@
+services:
+  java-app:
+    build:
+      context: .
+    container_name: task4-app
+    ports:
+      - "18080:8080"
+    depends_on:
+      - service-db
+    restart: unless-stopped
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://service-postgres:5432/postgres
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=admin
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=none
+
+  service-db:
+    image: postgres:16
+    container_name: service-postgres
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=admin
+      - POSTGRES_DB=postgres
+    ports:
+      - "15432:5432"
