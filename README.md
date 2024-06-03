@@ -25,55 +25,56 @@
 Результат задания: Рабочее веб-приложение с базовой аутентификацией и авторизацией на основе Spring Security и JWT, сопровождаемое модульными тестами и краткой документацией к API.
 
 # Реализация:
-...............
+В приложении реализована проверка и генерация токенов JWT, сконфигурирована проверка доступа пользователя к ресурсам на основе токенов.
+Для пользователя доступно две роли: **ROLE_USER**, **ROLE_ADMIN**. Создан контроллер для аутентификации и регистрации пользователей.
 
 
-Таблицы БД создаются с помощью скрипта Liquibase:
-   ```
-   src/main/resources/db/changelog/liquibase.xml
-   ```
+Таблица БД создается с помощью скрипта Liquibase:
+```
+src/main/resources/db/changelog/liquibase.xml
+```
 
 # REST API
-Для взаимодействия с контроллером анализа времени выполнения методов и получения информации о методах контроллера используется Swagger, который доступен по адресу:
-   ```
-   http://server:port/swagger-ui/index.html#/
-   ```
+Для взаимодействия с контроллерами и получения информации об имеющихся у них методов используется Swagger, который доступен по адресу:
+```
+http://server:port/swagger-ui/index.html#/
+```
 где:
 - "server" - ip-адрес сервера, на котором развернуто приложение;
 - "port" - порт, на котором доступно приложение.
 
 Например при развертывании приложения и БД с помощью Docker будет следующий адрес:
-   ```
-   http://127.0.0.1:18080/swagger-ui/index.html#/
-   ```
+```
+http://127.0.0.1:18080/swagger-ui/index.html#/
+```
 
 # Запуск приложения для проверки
 1. ОС Windows 10: приложение можно запустить вместе с СУБД Postgresql с помощью Docker. Для этого необходимо:
 - Скачать архив с master-ветки репозитория проекта по следующему адресу:
-   ```
-   https://github.com/RSVarfolomeev/t1_task1/archive/refs/heads/master.zip
-   ```
+```
+https://github.com/RSVarfolomeev/t1_task4/archive/refs/heads/master.zip
+```
 - Из корневой папки проекта в командной строке выполнить команду для развертывания проекта:
-   ```
-   docker-compose up
-   ```
+```
+docker-compose up
+```
 - После запуска проекта приложение будет доступно на порту 18080, СУБД Postgresql на порту 15432.
 
 2. Linux (CentOS 7): такой же способ запуска проекта, как было описано выше, но для Linux на примере CentOS 7:
 - По нижеуказанной инструкции развертываем Docker:
-   ```
-   https://docs.docker.com/engine/install/centos/
-   ```
+```
+https://docs.docker.com/engine/install/centos/
+```
 - Создаем папку для клонирования проекта, клонируем master-ветку репозитория с проектом:
-   ```
-   mkdir /opt/app
-   git clone https://github.com/RSVarfolomeev/t1_task1.git /opt/app
-   ```
+```
+mkdir /opt/app
+git clone https://github.com/RSVarfolomeev/t1_task4.git /opt/app
+```
 - Переходим в корневую папку проекта и развертываем проект с помощью docker compose:
-   ```
-   cd /opt/app
-   docker compose up
-   ```
+```
+cd /opt/app
+docker compose up
+```
 - После запуска проекта приложение будет доступно на порту 18080, СУБД Postgresql на порту 15432.
 
 ---
@@ -81,4 +82,4 @@
 
 ---
 
-Java 17, Spring Boot, Spring Web, Spring Data Jpa, Postgresql, Liquibase, Swagger, Docker, Maven
+Java 17, Spring Boot, Spring Web, Spring Security, JWT, Spring Data Jpa, Postgresql, Liquibase, Swagger, Docker, Maven
